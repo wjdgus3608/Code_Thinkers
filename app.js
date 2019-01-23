@@ -8,6 +8,7 @@ const swaggerUi = require('swagger-ui-express');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var qnaRouter = require('./routes/qna');
 
 var app = express();
 
@@ -25,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/qna-board',qnaRouter);
 /**
  * @swagger
  * tags:
