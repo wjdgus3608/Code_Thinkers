@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mongoDB:
+    image: mongo:latest
+    ports:
+      - "2001:27017"
+    expose:
+      - 27017
+    volumes:
+      - "/home/jung/mongo_data/:/data/db/"
+  node_for_mongo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    expose:
+      - 3000
