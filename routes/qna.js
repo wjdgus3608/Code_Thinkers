@@ -11,14 +11,14 @@ router.get('/', function(req, res, next) {
 
 /* qna-board list page */
 router.get('/posts', function(req, res, next) {
-    DB._searchData({},function (data) {
+    DB._searchData("All",function (data) {
         res.send(data);
     });
 });
 
 /* request one post */
 router.get('/posts/:id', function(req, res, next) {
-    DB._searchData({_id:req.params.id},function (data) {
+    DB._searchData(req.params.id,function (data) {
         res.send(data);
     });
     //res.send(req.params.id);

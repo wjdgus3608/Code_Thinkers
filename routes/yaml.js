@@ -88,12 +88,9 @@ var router = express.Router();
 *        200:
 *          description: Success Returns Board List
 *          schema:
-*            type: object
-*            properties:
-*              board_list:
-*                type: array
-*                items:
-*                  $ref: '#/definitions/QnA'
+*            type: array
+*            items:
+*              $ref: '#/definitions/Board'
 *  api/qna-board/posts:
 *    get:
 *      summary: Returns Post list in Qna-board
@@ -199,15 +196,22 @@ var router = express.Router();
 *       done:
 *         type: boolean
 *         description: 완료 여부
-*   QnA:
+*   Board:
 *     type: object
 *     required:
 *       - content
 *     properties:
 *       board_id:
 *         type: integer
+*         description: board's id
 *       board_name:
-*         type: string
+*         type: integer
+*         description: board's name
+*   QnA:
+*     type: object
+*     required:
+*       - content
+*     properties:
 *       post_list:
 *         type: array
 *         items:
