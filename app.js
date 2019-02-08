@@ -3,12 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var swagger=require('./public/swagger.js');
-const swaggerUi = require('swagger-ui-express');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var qnaRouter = require('./routes/qna');
+var swaggerRouter = require('./routes/yaml');
 
 var app = express();
 
@@ -27,50 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/qna-board',qnaRouter);
-/**
- * @swagger
- * tags:
- *   name: Todo
- *   description: Todo management
- * definitions:
- *   Todo:
- *     type: object
- *     required:
- *       - content
- *     properties:
- *       _id:
- *         type: string
- *         description: ObjectID
- *       content:
- *         type: string
- *         description: 할일 내용
- *       done:
- *         type: boolean
- *         description: 완료 여부
- */
-
-/**
- * @swagger
- * /todo:
- *   get:
- *     summary: Returns Todo list
- *     tags: [Todo]
- *     responses:
- *       200:
- *         description: todo list
- *         schema:
- *           type: object
- *           properties:
- *             todos:
- *               type: array
- *               items:
- *                 $ref: '#/definitions/Todo'
- */
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swagger()));
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+app.use('/api-docs', swaggerRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
