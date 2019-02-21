@@ -91,7 +91,7 @@ var router = express.Router();
 *            type: array
 *            items:
 *              $ref: '#/definitions/Board'
-*  api/qna-board/posts:
+*  api/boards/{board_id}/posts:
 *    get:
 *      summary: Returns Post list in Qna-board
 *      tags: [QnA]
@@ -129,7 +129,7 @@ var router = express.Router();
 *      - swagger_auth:
 *        - "write:pets"
 *        - "read:pets"
-*  api/qna-board/posts/{post_id}:
+*  api/boards/{board_id}/posts/{post_id}:
 *    get:
 *      summary: Returns One Post in Qna-board
 *      tags: [QnA]
@@ -193,6 +193,9 @@ var router = express.Router();
 *       post_writer:
 *         type: integer
 *         description: Post writer's id
+*       post_from:
+*         type: integer
+*         description: Board id
 *       done:
 *         type: boolean
 *         description: 완료 여부

@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var qnaRouter = require('./routes/qna');
+//var qnaRouter = require('./routes/qna');
 var boardsRouter = require('./routes/boards');
 var swaggerRouter = require('./routes/yaml');
 
@@ -27,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/boards',boardsRouter);
-app.use('/qna-board',qnaRouter);
 app.use('/api-docs', swaggerRouter);
 
 // error handler
